@@ -1,0 +1,209 @@
+### APRENDICES ###
+
+# Obtener todos los aprendices
+GET http://localhost:8000/aprendiz
+
+###
+
+# Obtener aprendiz por ID
+GET http://localhost:8000/aprendiz/1
+
+###
+
+# Crear nuevo aprendiz
+POST http://localhost:8000/aprendiz
+Content-Type: application/json
+
+{
+    "nombre": "Juan Carlos",
+    "apellido": "Pérez González",
+    "documento": "1234567890",
+    "correo": "juan.perez@email.com",
+    "ciudad": "Bogotá"
+}
+
+###
+
+# Actualizar aprendiz
+PUT http://localhost:8000/aprendiz
+Content-Type: application/json
+
+{
+    "id_aprendiz": 1,
+    "nombre": "Juan Carlos",
+    "apellido": "Pérez Rodríguez",
+    "documento": "1234567890",
+    "correo": "juan.perez.nuevo@email.com",
+    "ciudad": "Medellín"
+}
+
+###
+
+# Eliminar aprendiz (usando /:id)
+DELETE http://localhost:8000/aprendiz/1
+
+###
+
+# Carga masiva de aprendices
+POST http://localhost:8000/aprendiz/masivo
+Content-Type: application/json
+
+{
+    "aprendices": [
+        {
+            "nombre": "María",
+            "apellido": "García",
+            "documento": "9876543210",
+            "correo": "maria.garcia@email.com",
+            "ciudad": "Cali"
+        },
+        {
+            "nombre": "Pedro",
+            "apellido": "López",
+            "documento": "5555555555",
+            "correo": "pedro.lopez@email.com",
+            "ciudad": "Barranquilla"
+        }
+    ]
+}
+
+### DISPOSITIVOS ###
+
+# Obtener todos los dispositivos
+GET http://localhost:8000/dispositivo
+
+###
+
+# Obtener dispositivo por ID
+GET http://localhost:8000/dispositivo/1
+
+###
+
+# Crear nuevo dispositivo (JSON)
+POST http://localhost:8000/dispositivo
+Content-Type: application/json
+
+{
+    "marca": "Dell",
+    "modelo": "Inspiron 15",
+    "serial": "DL123456789",
+    "fecha_adquisicion": "2024-01-15",
+    "estado": "activo",
+    "foto": null
+}
+
+###
+
+# Crear nuevo dispositivo (con foto)
+POST http://localhost:8000/dispositivo
+Content-Type: multipart/form-data
+
+###
+
+# Actualizar dispositivo (JSON)
+PUT http://localhost:8000/dispositivo
+Content-Type: application/json
+
+{
+    "id_computador": 1,
+    "marca": "Dell",
+    "modelo": "Inspiron 15 3000",
+    "serial": "DL123456789",
+    "fecha_adquisicion": "2024-01-15",
+    "estado": "mantenimiento",
+    "foto": "uploads/foto_anterior.jpg"
+}
+
+###
+
+# Actualizar dispositivo (con nueva foto)
+PUT http://localhost:8000/dispositivo
+Content-Type: multipart/form-data
+
+###
+
+# Eliminar dispositivo (usando /:id)
+DELETE http://localhost:8000/dispositivo/1
+
+###
+
+# Carga masiva de dispositivos
+POST http://localhost:8000/dispositivo/masivo
+Content-Type: application/json
+
+{
+    "dispositivos": [
+        {
+            "marca": "HP",
+            "modelo": "Pavilion",
+            "serial": "HP987654321",
+            "fecha_adquisicion": "2024-02-01",
+            "estado": "activo",
+            "foto": null
+        },
+        {
+            "marca": "Lenovo",
+            "modelo": "ThinkPad",
+            "serial": "LN555666777",
+            "fecha_adquisicion": "2024-02-15",
+            "estado": "activo",
+            "foto": null
+        }
+    ]
+}
+
+###
+
+# Servir archivo de foto
+GET http://localhost:8000/uploads/1748354377904_foto.jpg
+
+### ASIGNACIONES ###
+
+# Obtener todas las asignaciones
+GET http://localhost:8000/asignacion
+
+###
+
+# Obtener asignaciones por aprendiz
+GET http://localhost:8000/asignacion/aprendiz/1
+
+###
+
+# Crear nueva asignación
+POST http://localhost:8000/asignacion
+Content-Type: application/json
+
+{
+    "id_aprendiz": 1,
+    "id_computador": 1
+}
+
+###
+
+# Eliminar asignación (mantiene el body porque necesita dos IDs)
+DELETE http://localhost:8000/asignacion
+Content-Type: application/json
+
+{
+    "id_aprendiz": 1,
+    "id_computador": 1
+}
+
+###
+
+# Carga masiva de asignaciones
+POST http://localhost:8000/asignacion/masivo
+Content-Type: application/json
+
+{
+    "asignaciones": [
+        {
+            "id_aprendiz": 1,
+            "id_computador": 2
+        },
+        {
+            "id_aprendiz": 2,
+            "id_computador": 3
+        }
+    ]
+}
